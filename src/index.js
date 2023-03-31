@@ -40,7 +40,7 @@ function RenderApp() {
         <Grid id="contents" container spacing={0}>
           <IonToolbar mode="ios" color="primary">
             <Grid xs={5} sm={4} md={3} lg={3}>
-              <img id="logo" fill="#p4420" slot="start" src={require('./invoest.png')} />
+              
             </Grid>
             {document.body.classList.contains("dark") ? (
               <>
