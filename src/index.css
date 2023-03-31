@@ -1,13 +1,228 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.text-dark {
+  border-radius: 2vw 2vw 2vw 2vw;
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+	--ion-color-primary: rgb(27, 171, 255);
+	--ion-color-primary-rgb: NaN,27,171;
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #NaN1896;
+	--ion-color-primary-tint: #NaN32b3;
+
+	--ion-color-secondary: #f6f6f6;
+	--ion-color-secondary-rgb: 29,29,32;
+	--ion-color-secondary-contrast: #232323;
+	--ion-color-secondary-contrast-rgb: 255,255,255;
+	--ion-color-secondary-shade: #1a1a1c;
+	--ion-color-secondary-tint: #343436;
+
+	--ion-color-tertiary: #0f91ff;
+	--ion-color-tertiary-rgb: 15,145,255;
+	--ion-color-tertiary-contrast: #ffffff;
+	--ion-color-tertiary-contrast-rgb: 255,255,255;
+	--ion-color-tertiary-shade: #0d80e0;
+	--ion-color-tertiary-tint: #279cff;
+
+	--ion-color-success: #181818;
+	--ion-color-success-rgb: 45,211,111;
+	--ion-color-success-contrast: #1c1c1d;
+	--ion-color-success-contrast-rgb: 0,0,0;
+	--ion-color-success-shade: #161616;
+	--ion-color-success-tint: #131413;
+
+	--ion-color-warning: #0160b9;
+	--ion-color-warning-rgb: 255,196,9;
+	--ion-color-warning-contrast: #000000;
+	--ion-color-warning-contrast-rgb: 0,0,0;
+	--ion-color-warning-shade: #ffffff;
+	--ion-color-warning-tint: #b5b5b5;
+
+	--ion-color-danger: #eb445a;
+	--ion-color-danger-rgb: 235,68,90;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255,255,255;
+	--ion-color-danger-shade: #cf3c4f;
+	--ion-color-danger-tint: #ed576b;
+
+	--ion-color-medium: #0f91ff;
+	--ion-color-medium-rgb: 117,117,132;
+	--ion-color-medium-contrast: #ffffff;
+	--ion-color-medium-contrast-rgb: 255,255,255;
+	--ion-color-medium-shade: #676774;
+	--ion-color-medium-tint: #026fdc;
+
+	--ion-color-light: #f4f5f8;
+	--ion-color-light-rgb: 244,245,248;
+	--ion-color-light-contrast: #000000;
+	--ion-color-light-contrast-rgb: 0,0,0;
+	--ion-color-light-shade: #d7d8da;
+	--ion-color-light-tint: #f5f6f9;
+
+}
+
+/* Fallback for older browsers or manual mode */
+body.dark {
+  /* Dark mode variables go here */
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-primary: #010a1f;
+  --ion-color-success-contrast: #f5efef;
+  --ion-color-tertiary: black;
+  --ion-color-light: rgb(0, 16, 46);
+  --ion-color-secondary: #000534;
+  --ion-color-success: #031d54;
+  --ion-color-warning-shade: #0160b9;
+  --ion-color-light-contrast: #01194c;
+  --ion-color-medium: #0160b9;
+  --ion-color-medium-contrast-rgb: #0273dd;
+	--ion-color-medium-shade: #0752ae;
+	--ion-color-medium-tint: #0537ab;
+	--ion-color-warning: #ffffff;
+	--ion-color-warning-rgb: 255,196,9;
+	--ion-color-warning-contrast: #fefefe;
+	--ion-color-warning-contrast-rgb: 0,0,0;
+	--ion-color-warning-shade: #011226;
+	--ion-color-warning-tint: #ffffff;
+}
+
+#logo1:hover{
+	cursor: pointer;
+}
+#standard-textarea{
+  color: var(--ion-color-warning);
+}
+#searchbar{
+	background: var(--ion-color-primary) ;
+}
+
+
+#cardstit{
+	color: var(--ion-color-success-contrast);
+}
+ion-menu {
+  --ion-background-color: var(--ion-color-tertiary);
+  --ion-text-color: var(--ion-color-primary-contrast); 
+}
+
+ion-header {
+  --ion-background-color: var(--ion-color-tertiary);
+  --ion-text-color: var(--ion-color-primary-contrast); 
+}
+
+
+
+#sidemenu{
+    border: 0;
+}
+
+#tol {
+  --background: var(--ion-background-color, #fff);
+
+  --box-shadow: 0 !important;
+  --cancel-button-color: var(--ion-color-step-900, #1a1a1a);
+  --clear-button-color: initial;
+ border-radius: 2vw;
+}
+
+.ion-color.sc-ion-searchbar-md-h .searchbar-input.sc-ion-searchbar-md{
+  border-top-left-radius: 1.5vw;
+  border-top-right-radius: 1.5vw;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+  
+ background-color: rgb(27, 171, 255);
+ border-color: white ;
+ border-radius: 2vmin 2vmin 2vmin 2vmin !important;
+
+}
+
+#showcard{
+  border:  2px var(--ion-color-tertiary) solid;
+}
+
+#priv:hover{
+  cursor: pointer;
+  border:  1px var(--ion-color-light) solid;
+  animation-duration: 2s;
+}
+
+
+ion-toast.custom-toast:hover{
+
+  border:  1px var(--ion-color-light) solid;
+  animation-duration: 2s;
+}
+#googlesigninbutton:hover{
+  cursor: pointer;
+  border:  1px var(--ion-color-light) solid;
+  animation-duration: 2s;
+}
+
+#popup{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ion-background-color, #fff);
+  width: 90%;
+  height: 100px;
+  border-radius: 10px;
+}
+
+ion-backdrop {
+  opacity: 0.9;
+  background: var(--ion-color-primary);
+}
+
+#maincontents{
+  padding-top: 2vh;
+}
+
+
+.card{
+ border: rgb(0, 37, 139) 1vw;
+ border-radius: 0vmin 0vmin 2vmin 2vmin ;
+box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+transition: all .3s ease-in-out;
+}
+
+@media screen and (min-width: 992px) {
+  /* Styles to apply for screens 992 pixels or wider */
+ #menubutton{
+  display: none;
+ }
+}
+
+
+#showcard:hover {
+box-shadow: rgba(77, 73, 73, 0.22) 0px 19px 43px;
+transform: translate3d(0px, -1px, 0px);
+filter: blur(-100px)
+}
+
+
+.listG{
+  font-size: 1vmax; 
+  font-weight: 600;
+}
+
+.css-i4bv87-MuiSvgIcon-root:hover{
+
+  color: rgb(43, 177, 255) !important;
+}
+
+
+
+
+.css-1ws8119-MuiDivider-root::before, .css-1ws8119-MuiDivider-root::after{
+  border-top: thin solid rgb(255, 255, 255) !important;
 }
