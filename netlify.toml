@@ -1,0 +1,18 @@
+[[edge_functions]]
+function = "localize"
+path = "/test"
+
+[[edge_functions]]
+function = "amadeapi"
+path = "/amapi"
+
+
+[[edge_functions]]
+function = "local"
+path = "/test"
+
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
