@@ -11,8 +11,8 @@ function App() {
     try {
       setResponse(false)
       setLoading(true)
-      const response = await axios.get('/.netlify/functions/openai', {
-        jobtype: 'software engineer',
+      const response = await axios.post('/.netlify/functions/openai', {
+        jobtype: 'software developer at facebook',
         work: cvText
       });
       console.log(response.data);
