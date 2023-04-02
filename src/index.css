@@ -5,19 +5,19 @@
 }
 
 :root {
-	--ion-color-primary: rgb(27, 171, 255);
-	--ion-color-primary-rgb: NaN,27,171;
-	--ion-color-primary-contrast: #ffffff;
+	--ion-color-primary: #cff8ff;
+	--ion-color-primary-rgb: #cff8ff;
+	--ion-color-primary-contrast: #bce2f0;
 	--ion-color-primary-contrast-rgb: 255,255,255;
 	--ion-color-primary-shade: #NaN1896;
 	--ion-color-primary-tint: #NaN32b3;
 
-	--ion-color-secondary: #f6f6f6;
+	--ion-color-secondary: #dcdada;
 	--ion-color-secondary-rgb: 29,29,32;
 	--ion-color-secondary-contrast: #232323;
 	--ion-color-secondary-contrast-rgb: 255,255,255;
-	--ion-color-secondary-shade: #1a1a1c;
-	--ion-color-secondary-tint: #343436;
+	--ion-color-secondary-shade: #838383;
+	--ion-color-secondary-tint: #898989;
 
 	--ion-color-tertiary: #0f91ff;
 	--ion-color-tertiary-rgb: 15,145,255;
@@ -47,12 +47,12 @@
 	--ion-color-danger-shade: #cf3c4f;
 	--ion-color-danger-tint: #ed576b;
 
-	--ion-color-medium: #0f91ff;
+	--ion-color-medium: #fcc22d;
 	--ion-color-medium-rgb: 117,117,132;
-	--ion-color-medium-contrast: #ffffff;
+	--ion-color-medium-contrast: #000000;
 	--ion-color-medium-contrast-rgb: 255,255,255;
-	--ion-color-medium-shade: #676774;
-	--ion-color-medium-tint: #026fdc;
+	--ion-color-medium-shade: #9d3205;
+	--ion-color-medium-tint: #473900;
 
 	--ion-color-light: #f4f5f8;
 	--ion-color-light-rgb: 244,245,248;
@@ -64,39 +64,35 @@
 }
 
 /* Fallback for older browsers or manual mode */
-body.dark {
-  /* Dark mode variables go here */
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-primary: #010a1f;
-  --ion-color-success-contrast: #f5efef;
-  --ion-color-tertiary: black;
-  --ion-color-light: rgb(0, 16, 46);
-  --ion-color-secondary: #000534;
-  --ion-color-success: #031d54;
-  --ion-color-warning-shade: #0160b9;
-  --ion-color-light-contrast: #01194c;
-  --ion-color-medium: #0160b9;
-  --ion-color-medium-contrast-rgb: #0273dd;
-	--ion-color-medium-shade: #0752ae;
-	--ion-color-medium-tint: #0537ab;
-	--ion-color-warning: #ffffff;
-	--ion-color-warning-rgb: 255,196,9;
-	--ion-color-warning-contrast: #fefefe;
-	--ion-color-warning-contrast-rgb: 0,0,0;
-	--ion-color-warning-shade: #011226;
-	--ion-color-warning-tint: #ffffff;
-}
+
 
 #logo1:hover{
 	cursor: pointer;
 }
 #standard-textarea{
-  color: var(--ion-color-warning);
+  color: black ;
+  background: var(--ion-color-secondary) ;
+}
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color:  rgb(99, 99, 99) !important;
+  font-weight: 700;
 }
 #searchbar{
 	background: var(--ion-color-primary) ;
 }
+.css-1rb63tl-MuiInputBase-root-MuiInput-root.Mui-focused:after{
+  border-bottom: 0px solid #676767 !important;
+}
+.css-1rb63tl-MuiInputBase-root-MuiInput-root.Mui-focused:before{
+  border-bottom: 0px solid #676767 !important;
+}
+#navhead{
+  background-color: #cff8ff;
+}
 
+#submit{
+  background-color: #fcc22d;
+}
 
 #cardstit{
 	color: var(--ion-color-success-contrast);
@@ -141,9 +137,7 @@ ion-header {
 
 }
 
-#showcard{
-  border:  2px var(--ion-color-tertiary) solid;
-}
+
 
 #priv:hover{
   cursor: pointer;

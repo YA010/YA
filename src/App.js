@@ -12,7 +12,7 @@ function App() {
       setResponse(false)
       setLoading(true)
       const response = await axios.post('/.netlify/functions/openai', {
-        jobtype: 'software developer at facebook',
+        jobtype: 'software developer',
         work: cvText
       });
       console.log(response.data);
@@ -26,9 +26,9 @@ function App() {
   return (
     <IonGrid>
       <IonRow>
-        <IonCol sizeXs="12" style={{marginTop: "10vh"}}>
+        <IonCol sizeXs="8" style={{marginTop: "10vh", marginLeft: "auto",marginRight: "auto"}}>
           <IonCardTitle id="cardstit" class='card-text' style={{textAlign: "center", fontWeight: "800"}}>
-            Generate a custom cv 
+           Copy and paste your previous work experience and education here
           </IonCardTitle>
         </IonCol>
       </IonRow>
@@ -37,36 +37,33 @@ function App() {
           <IonCard mode="ios" color="secondary" id="showcard">
             <IonCardHeader>
               <IonCardTitle class='card-text'>
-                Paste in your cv here 
+               
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
             <TextField
           id="standard-textarea"
-          label="Cv Here"
-          placeholder="finish"
+          label="Use the following format: "
+          placeholder="1.Name of company , Job , Brief description of role"
           multiline
           focused
-          color='primary'
-          style={{width: "100%", color:"var(--ion-color-light)"}}
+        
+          style={{width: "100%", color:"white"}}
           variant="standard"
           onChange={(e) => setCvText(e.target.value)}
         />
              
-              <IonRow>
-                <IonCol sizeXs="6">
-                  <IonButton color="medium" expand="block">
-                    Preview
-                  </IonButton>
-                </IonCol>
-                <IonCol sizeXs="6">
-                  <IonButton color="medium" expand="block" onClick={handleSubmit}>
-                    Submit
-                  </IonButton>
-                </IonCol>
-              </IonRow>
+             
             </IonCardContent>
           </IonCard>
+          <IonRow>
+               
+               <IonCol sizeXs="6" style={{ marginLeft: "auto",marginRight: "auto"}}>
+                 <IonButton color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
+                   Submit
+                 </IonButton>
+               </IonCol>
+             </IonRow>
         </IonCol>
       </IonRow>
       {loading ? (<><IonCol sizeXs="12"  >
@@ -78,10 +75,10 @@ function App() {
 <IonCardHeader >
   <Skeleton>
 <IonCardTitle class='card-text'> </IonCardTitle>
-<IonCardSubtitle>Symbol:</IonCardSubtitle>
-<IonCardSubtitle>Exchange: </IonCardSubtitle>
-<IonCardSubtitle>Industry: </IonCardSubtitle>
-<IonCardSubtitle>Market Cap: </IonCardSubtitle>
+<IonCardSubtitle></IonCardSubtitle>
+<IonCardSubtitle> </IonCardSubtitle>
+<IonCardSubtitle> </IonCardSubtitle>
+<IonCardSubtitle> </IonCardSubtitle>
 </Skeleton>
 </IonCardHeader>        
 </IonCard>
