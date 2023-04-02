@@ -73,6 +73,9 @@
   color: black ;
   background: var(--ion-color-secondary) ;
 }
+.css-1rb63tl-MuiInputBase-root-MuiInput-root {
+  color:  rgb(99, 99, 99) !important;
+}
 .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
   color:  rgb(99, 99, 99) !important;
   font-weight: 700;
