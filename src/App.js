@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonImg, IonInput, IonNote, IonRow } from '@ionic/react';
 import axios from 'axios';
 import { Skeleton, TextField } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 
 function App() {
   const [cvText, setCvText] = useState('');
@@ -22,7 +24,29 @@ function App() {
       console.error(error);
     }
   }
-  
+  const CustomTextField = styled(TextField)({
+    width: '100%',
+    '&.Mui-focused': {
+      color: 'rgb(99, 99, 99) !important' , // set label color when focused
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#676767',  // change border color here
+      },
+      '&:hover fieldset': {
+        borderColor: '#676767',  // change border color on hover here
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#808080',  // change border color when focused here
+      },
+    
+    },
+    '& .MuiInputBase-root': {
+      color: '#808080',
+    },
+   
+    
+  });
   return (
     <IonGrid>
       <IonRow>
@@ -41,17 +65,14 @@ function App() {
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
-            <TextField
-         
-          label="Use the following format: "
-          placeholder="1.Name of company , Job , Brief description of role"
-          multiline
-          focused
-        
-          style={{width: "100%", color:"white"}}
-         
-          onChange={(e) => setCvText(e.target.value)}
-        />
+            <CustomTextField
+      label="Use the following format: "
+      placeholder="1.Name of company , Job , Brief description of role"
+      multiline
+      focused
+      onChange={(e) => setCvText(e.target.value)}
+    />
+    
              
              
             </IonCardContent>
