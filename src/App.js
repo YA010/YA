@@ -3,8 +3,8 @@ import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, Ion
 import axios from 'axios';
 import { Skeleton, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-
-
+import { createTheme,ThemeProvider } from '@mui/material/styles';
+import { blueGrey } from '@mui/material/colors';
 function App() {
   const [cvText, setCvText] = useState('');
   const [response, setResponse] = useState();
@@ -24,8 +24,20 @@ function App() {
       console.error(error);
     }
   }
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#00000', // change primary color here
+      },
+    },
+  });
+  
+  const color1 = blueGrey[500]
   const CustomTextField = styled(TextField)({
     width: '100%',
+    primary: {
+      main: '#00000',
+    },
     '&.Mui-focused': {
       color: 'rgb(99, 99, 99) !important' , // set label color when focused
     },
@@ -65,15 +77,17 @@ function App() {
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
+            <ThemeProvider theme={theme}>
             <CustomTextField
       label="Use the following format: "
       placeholder="1.Name of company , Job , Brief description of role"
       multiline
       focused
+      color = "primary"
       onChange={(e) => setCvText(e.target.value)}
     />
     
-             
+             </ThemeProvider>
              
             </IonCardContent>
           </IonCard>
