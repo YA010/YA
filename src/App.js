@@ -42,14 +42,14 @@ function App() {
             </IonCardHeader>
             <IonCardContent>
             <TextField
-          id="standard-textarea"
+         
           label="Use the following format: "
           placeholder="1.Name of company , Job , Brief description of role"
           multiline
           focused
         
           style={{width: "100%", color:"white"}}
-          variant="standard"
+         
           onChange={(e) => setCvText(e.target.value)}
         />
              

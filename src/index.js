@@ -54,7 +54,7 @@ function RenderApp() {
     <img id="logo" fill="#p4420" slot="start" src={require('./careerscamplogo.png')} />
    
 </Grid> 
-<Navbar.Toggle style={{marginLeft: "auto"}} className="justify-content-end" aria-controls={`offcanvasNavbar-expand-md`} />
+<Navbar.Toggle style={{marginLeft: "auto", marginRight: "2vw"}} className="justify-content-end" aria-controls={`offcanvasNavbar-expand-md`} />
  
 </Grid>
            <Navbar.Offcanvas
