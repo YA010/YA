@@ -11,6 +11,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const handleSubmit = async () => {
     try {
+      
+     
       setResponse(false)
       setLoading(true)
       const response = await axios.post('/.netlify/functions/openai', {
@@ -31,6 +33,9 @@ function App() {
       },
     },
   });
+  const handleChange = (event) => {
+    setCvText(event.target.value);
+  };
   
   const color1 = blueGrey[500]
   const CustomTextField = styled(TextField)({
@@ -78,13 +83,16 @@ function App() {
             </IonCardHeader>
             <IonCardContent>
             <ThemeProvider theme={theme}>
-            <CustomTextField
+           <TextField
       label="Use the following format: "
       placeholder="1.Name of company , Job , Brief description of role"
-      multiline
-      focused
+  
+     
       color = "primary"
-      onChange={(e) => setCvText(e.target.value)}
+      variant="outlined"
+      value={cvText}
+      fullWidth
+      onChange={handleChange}
     />
     
              </ThemeProvider>
