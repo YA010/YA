@@ -121,7 +121,7 @@ function App() {
         </IonItem>
       </IonList>
                <IonCol sizeXs="6" >
-                 <IonButton  disabled={logs === ""} color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
+                 <IonButton  disabled={logs === "" || cvText === ''} color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
                    Submit
                  </IonButton>
                </IonCol>
