@@ -116,7 +116,7 @@ function App() {
             <IonSelectOption color="primary" value="Hospitality">Hospitality</IonSelectOption>
             <IonSelectOption value="Software engineer">Software engineer</IonSelectOption>
             <IonSelectOption value="Data developer">Data developer</IonSelectOption>
-            <IonSelectOption value="Data developer">Front End Developer</IonSelectOption>
+            <IonSelectOption value="Front End Developer">Front End Developer</IonSelectOption>
           </IonSelect>
         </IonItem>
       </IonList>
