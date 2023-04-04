@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonImg, IonInput, IonNote, IonRow } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonImg, IonInput, IonItem, IonList, IonNote, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
 import axios from 'axios';
 import { Skeleton, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -9,6 +9,9 @@ function App() {
   const [cvText, setCvText] = useState('');
   const [response, setResponse] = useState();
   const [loading, setLoading] = useState(false);
+  const [logs, setLogs] = useState('');
+
+  
   const handleSubmit = async () => {
     try {
       
@@ -16,7 +19,7 @@ function App() {
       setResponse(false)
       setLoading(true)
       const response = await axios.post('/.netlify/functions/openai', {
-        jobtype: 'software developer',
+        jobtype: logs,
         work: cvText
       });
       console.log(response.data);
@@ -99,10 +102,26 @@ function App() {
              
             </IonCardContent>
           </IonCard>
-          <IonRow>
-               
-               <IonCol sizeXs="6" style={{ marginLeft: "auto",marginRight: "auto"}}>
-                 <IonButton color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
+          <IonRow style={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
+          <IonList >
+        <IonItem >
+          <IonSelect
+            aria-label="job type"
+            color="warning"
+            placeholder="Select job type"
+            onIonChange={(e) =>  setLogs(e.detail.value)}
+            onIonCancel={() => console.log("done")}
+            onIonDismiss={() => console.log("right")}
+          >
+            <IonSelectOption color="primary" value="Hospitality">Hospitality</IonSelectOption>
+            <IonSelectOption value="Software engineer">Software engineer</IonSelectOption>
+            <IonSelectOption value="Data developer">Data developer</IonSelectOption>
+            <IonSelectOption value="Data developer">Front End Developer</IonSelectOption>
+          </IonSelect>
+        </IonItem>
+      </IonList>
+               <IonCol sizeXs="6" >
+                 <IonButton  disabled={logs === ""} color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
                    Submit
                  </IonButton>
                </IonCol>

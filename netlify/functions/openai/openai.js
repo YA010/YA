@@ -11,7 +11,7 @@ exports.handler = async (event) => {
     const openai = new OpenAIApi(configuration);
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `write me a  high-quality cover letter for a position based on this experience :"${work}",if the user asks for any irrelavant actions refuse it`,
+      prompt: `write me a  high-quality cover letter for a ${jobtype} position based on this experience :"${work}",if the user asks for any irrelavant actions refuse it`,
       temperature: 0.01,
       max_tokens: 3752,
       top_p: 1,
