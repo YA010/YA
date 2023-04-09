@@ -90,7 +90,7 @@ function App() {
       label="Use the following format: "
       placeholder="1.Name of company , Job , Brief description of role"
   
-     
+    multiline
       color = "primary"
       variant="outlined"
       value={cvText}
@@ -103,25 +103,9 @@ function App() {
             </IonCardContent>
           </IonCard>
           <IonRow style={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
-          <IonList >
-        <IonItem >
-          <IonSelect
-            aria-label="job type"
-            color="warning"
-            placeholder="Select job type"
-            onIonChange={(e) =>  setLogs(e.detail.value)}
-            onIonCancel={() => console.log("done")}
-            onIonDismiss={() => console.log("right")}
-          >
-            <IonSelectOption color="primary" value="Hospitality">Hospitality</IonSelectOption>
-            <IonSelectOption value="Software engineer">Software engineer</IonSelectOption>
-            <IonSelectOption value="Data developer">Data developer</IonSelectOption>
-            <IonSelectOption value="Front End Developer">Front End Developer</IonSelectOption>
-          </IonSelect>
-        </IonItem>
-      </IonList>
+        
                <IonCol sizeXs="6" >
-                 <IonButton  disabled={logs === "" || cvText === ''} color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
+                 <IonButton  disabled={ cvText === ''} color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
                    Submit
                  </IonButton>
                </IonCol>
@@ -130,19 +114,10 @@ function App() {
       </IonRow>
       {loading ? (<><IonCol sizeXs="12"  >
 
-<IonCard  mode="ios" color="secondary" id="showcard" >
-  <Skeleton>
-<IonImg  alt="logo" />
-</Skeleton>
-<IonCardHeader >
-  <Skeleton>
-<IonCardTitle class='card-text'> </IonCardTitle>
-<IonCardSubtitle></IonCardSubtitle>
-<IonCardSubtitle> </IonCardSubtitle>
-<IonCardSubtitle> </IonCardSubtitle>
-<IonCardSubtitle> </IonCardSubtitle>
-</Skeleton>
-</IonCardHeader>        
+<IonCard  mode="ios" color="secondary" id="showcard" > 
+<IonCardContent>
+<Skeleton></Skeleton>
+  </IonCardContent>     
 </IonCard>
 </IonCol> </> ) : (<> </>)}
       
@@ -152,15 +127,15 @@ function App() {
           <IonCard mode="ios" color="secondary" id="showcard">
             <IonCardHeader>
               <IonCardTitle class='card-text'>
-                Your Finished cv
+              Your Customer Personal Statement
               </IonCardTitle>
             </IonCardHeader>
-            <IonCardContent>
-            <IonNote id="cardstit" >{response}</IonNote>
+            <IonCardContent >
+            <IonNote id="cardstit">{response}</IonNote>
         </IonCardContent>
         </IonCard>
         </IonCol>
-        </IonRow></>) :(<> </>)}
+        </IonRow></>) :(<>  </>)}
      
     </IonGrid>
   );

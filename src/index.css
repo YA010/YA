@@ -14,7 +14,7 @@
 
 	--ion-color-secondary: #dcdada;
 	--ion-color-secondary-rgb: 29,29,32;
-	--ion-color-secondary-contrast: #232323;
+	--ion-color-secondary-contrast: #292929eb;
 	--ion-color-secondary-contrast-rgb: 255,255,255;
 	--ion-color-secondary-shade: #838383;
 	--ion-color-secondary-tint: #898989;
@@ -68,17 +68,15 @@
 .alert-radio-inner{
  background-color: rgb(225, 141, 15) !important;
 }
-.sc-ion-alert-md{
-  color: black !important;
+
+.css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input{
+  margin-bottom: 10vh !important;
 }
 
 #logo1:hover{
 	cursor: pointer;
 }
-#standard-textarea{
-  color: black ;
-  background: var(--ion-color-secondary) ;
-}
+
 .css-1rb63tl-MuiInputBase-root-MuiInput-root {
   color:  rgb(99, 99, 99) !important;
 }

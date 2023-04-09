@@ -43,10 +43,6 @@ function RenderApp() {
     <IonPage id="main">
       <IonHeader fixed mode="ios">
         
-         
-     
-           
-           
             <Navbar className="justify-content-end" collapseOnSelect expand="md" id="navhead" variant="light">
             <Grid id="contents" container spacing={0}  > 
                  
