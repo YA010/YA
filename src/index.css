@@ -5,16 +5,16 @@
 }
 
 :root {
-	--ion-color-primary: #cff8ff;
-	--ion-color-primary-rgb: #cff8ff;
-	--ion-color-primary-contrast: #bce2f0;
+	--ion-color-primary: #3b3b3b;
+	--ion-color-primary-rgb: #3b3b3b;
+	--ion-color-primary-contrast: #ffb217;
 	--ion-color-primary-contrast-rgb: 255,255,255;
 	--ion-color-primary-shade: #NaN1896;
 	--ion-color-primary-tint: #NaN32b3;
 
 	--ion-color-secondary: #dcdada;
 	--ion-color-secondary-rgb: 29,29,32;
-	--ion-color-secondary-contrast: #292929eb;
+	--ion-color-secondary-contrast: #8c8c8ceb;
 	--ion-color-secondary-contrast-rgb: 255,255,255;
 	--ion-color-secondary-shade: #838383;
 	--ion-color-secondary-tint: #898989;
@@ -51,12 +51,12 @@
 	--ion-color-medium-rgb: 117,117,132;
 	--ion-color-medium-contrast: #000000;
 	--ion-color-medium-contrast-rgb: 255,255,255;
-	--ion-color-medium-shade: #9d3205;
-	--ion-color-medium-tint: #473900;
+	--ion-color-medium-shade: #ffb13d;
+	--ion-color-medium-tint: #292929;
 
 	--ion-color-light: #f4f5f8;
 	--ion-color-light-rgb: 244,245,248;
-	--ion-color-light-contrast: #000000;
+	--ion-color-light-contrast: #353535;
 	--ion-color-light-contrast-rgb: 0,0,0;
 	--ion-color-light-shade: #d7d8da;
 	--ion-color-light-tint: #f5f6f9;
@@ -71,6 +71,18 @@
 
 .css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input{
   margin-bottom: 10vh !important;
+}
+
+#tablink:hover{
+
+}
+
+#showcard{
+  background: var(--ion-color-dark);
+}
+
+.header-ios ion-toolbar:last-of-type{
+  border-width: 0 !important;
 }
 
 #logo1:hover{
@@ -192,7 +204,7 @@ ion-backdrop {
 .card{
  border: rgb(0, 37, 139) 1vw;
  border-radius: 0vmin 0vmin 2vmin 2vmin ;
-box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+box-shadow: rgba(110, 110, 110, 0.06) 0px 1px 1px;
 transition: all .3s ease-in-out;
 }
 
@@ -205,11 +217,17 @@ transition: all .3s ease-in-out;
 
 
 #showcard:hover {
-box-shadow: rgba(77, 73, 73, 0.22) 0px 19px 43px;
+box-shadow: rgba(154, 154, 154, 0.22) 0px 19px 43px;
 transform: translate3d(0px, -1px, 0px);
-filter: blur(-100px)
+filter: blur(-120px);
+cursor: pointer;
 }
 
+#showcard {
+  box-shadow: rgba(255, 255, 255, 0.22) 0px 0px 0px;
+  transform: translate3d(0px, -1px, 0px);
+  filter: blur(-120px)
+  }
 
 .listG{
   font-size: 1vmax; 

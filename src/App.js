@@ -5,6 +5,9 @@ import { Skeleton, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { createTheme,ThemeProvider } from '@mui/material/styles';
 import { blueGrey } from '@mui/material/colors';
+
+import "./App.css"
+
 function App() {
   const [cvText, setCvText] = useState('');
   const [response, setResponse] = useState();
@@ -103,9 +106,23 @@ function App() {
             </IonCardContent>
           </IonCard>
           <IonRow style={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
-        
+          <IonList >
+        <IonItem >
+          <IonSelect
+            aria-label="job type"
+            color="warning"
+            placeholder="Select job type"
+            onIonChange={(e) =>  setLogs(e.detail.value)}
+            onIonCancel={() => console.log("done")}
+            onIonDismiss={() => console.log("right")}
+          >
+            <IonSelectOption value="Software engineer">Software engineer</IonSelectOption>
+            <IonSelectOption value="Data developer">Junior Digital Marketing</IonSelectOption>
+          </IonSelect>
+        </IonItem>
+      </IonList>
                <IonCol sizeXs="6" >
-                 <IonButton  disabled={ cvText === ''} color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
+                 <IonButton  disabled={logs === "" || cvText === ''} color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
                    Submit
                  </IonButton>
                </IonCol>
@@ -127,7 +144,7 @@ function App() {
           <IonCard mode="ios" color="secondary" id="showcard">
             <IonCardHeader>
               <IonCardTitle class='card-text'>
-              Your Customer Personal Statement
+              Your Custom Personal Statement
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent >

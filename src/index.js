@@ -2,7 +2,7 @@
 
 import React,{ Suspense } from 'react';
 import './index.css';
-import { IonApp, IonContent, IonHeader, IonMenu, IonSplitPane, IonTitle, IonToolbar, IonIcon,  IonRouterOutlet,  IonTabs, IonImg, IonRoute, IonTabBar, IonTabButton, IonPage, IonLabel, IonButton } from '@ionic/react';
+import { IonApp, IonContent, IonHeader, IonMenu, IonSplitPane, IonTitle, IonToolbar, IonIcon,  IonRouterOutlet,  IonTabs, IonImg, IonRoute, IonTabBar, IonTabButton, IonPage, IonLabel, IonButton, IonMenuToggle } from '@ionic/react';
 import { calendar, personCircle, informationCircle } from 'ionicons/icons';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import {  map, desktop,searchCircle } from 'ionicons/icons';
@@ -19,6 +19,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import Header from './components/header';
+import Sidebar from './components/sidebar';
 // custom function to enable dark theme replace if you think yours is better
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 toggleDarkTheme(prefersDark.matches);
@@ -40,46 +42,25 @@ function RenderApp() {
  return (
   <IonReactRouter>
   <IonApp>
-    <IonPage id="main">
-      <IonHeader fixed mode="ios">
-        
-            <Navbar className="justify-content-end" collapseOnSelect expand="md" id="navhead" variant="light">
-            <Grid id="contents" container spacing={0}  > 
-                 
-                 <Grid  xs={5} sm={4} md={3} lg={3 } direction="row">
-    <img id="logo" fill="#p4420" slot="start" src={require('./careerscamplogo.png')} />
+  
+    <IonSplitPane when="lg" mode="ios" id="sidemenu" contentId="main">
    
-</Grid> 
-<Navbar.Toggle style={{marginLeft: "auto", marginRight: "2vw"}} className="justify-content-end" aria-controls={`offcanvasNavbar-expand-md`} />
- 
-</Grid>
-           <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-md`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-md`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
-                  Offcanvas
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav style={{alignItems: "center"}} className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1" style={{fontWeight: "900", color: "black"}}>About</Nav.Link>
-                  <Nav.Link href="#action2" style={{fontWeight: "900", color: "black"}}>Contact</Nav.Link>
-              
-                </Nav>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Navbar>
-        
-        
-      </IonHeader>
+     <Sidebar/>
+      
+      <IonPage id="main">
+      <div className="ion-page" id="main">
+   <Header/>
       <IonContent color="light">
         <Route path="/dashboard" component={App} exact={true} />
+        <Route path="/searches" component={App} exact={true} />
+        <Route path="/learn" component={App} exact={true} />
+        <Route path="/applications" component={App} exact={true} />
+        <Route path="/help" component={App} exact={true} />
         <Route path="/" render={() => <Redirect to="/dashboard" />} exact={true} />
       </IonContent>
+      </div>
     </IonPage>
+    </IonSplitPane>
   </IonApp>
 </IonReactRouter>
 
