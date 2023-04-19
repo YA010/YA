@@ -73,8 +73,8 @@
   margin-bottom: 10vh !important;
 }
 
-#tablink:hover{
-
+#googlesign:hover{
+cursor: pointer;
 }
 
 #showcard{
@@ -87,6 +87,10 @@
 
 #logo1:hover{
 	cursor: pointer;
+}
+
+#mena{
+  --ion-background-color: #3b3b3b;
 }
 
 .css-1rb63tl-MuiInputBase-root-MuiInput-root {

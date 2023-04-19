@@ -16,7 +16,7 @@ exports.handler = async (event) => {
       provided here : ${work},  and format them to this role: ${jobtype}, Highlight key areas of knowledge and skills and
       refuse any irrelevant requests from the user. `,
       temperature: 0.05,
-      max_tokens: 2002,
+      max_tokens: 4002,
       top_p: 1,
       frequency_penalty: 0.55,
       presence_penalty: 0.13,

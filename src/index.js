@@ -1,6 +1,6 @@
 // Import required modules and components
 
-import React,{ Suspense } from 'react';
+import React,{ Suspense, useEffect, useState } from 'react';
 import './index.css';
 import { IonApp, IonContent, IonHeader, IonMenu, IonSplitPane, IonTitle, IonToolbar, IonIcon,  IonRouterOutlet,  IonTabs, IonImg, IonRoute, IonTabBar, IonTabButton, IonPage, IonLabel, IonButton, IonMenuToggle } from '@ionic/react';
 import { calendar, personCircle, informationCircle } from 'ionicons/icons';
@@ -22,31 +22,54 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
 import Profile from './pages/profile';
+import { app,auth, firestore } from './components/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
+import Login from './components/login';
+import { useHistory } from 'react-router-dom';
 // custom function to enable dark theme replace if you think yours is better
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-toggleDarkTheme(prefersDark.matches);
-
-
-// Listen for changes to the prefers-color-scheme media query
-prefersDark.addListener((mediaQuery) => toggleDarkTheme(mediaQuery.matches));
 
 // Add or remove the "dark" class based on if the media query matches
-function toggleDarkTheme(shouldAdd) {
-  document.body.classList.toggle('dark', shouldAdd);
- 
+function AuthenticationWrapper({ children }) {
+  const [user, loading, error] = useAuthState(auth);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (loading) {
+      return; // Wait until Firebase authentication is complete
+    }
+  
+    if (!user) {
+      if (history.location.pathname !== '/login') {
+        history.push('/login');
+      }
+    } else {
+      if (history.location.pathname === '/login') {
+        history.push('/dashboard');
+      }
+    }
+  }, [user, loading, history]);
+
+  return children;
 }
+
 
 
 // main function being rendered
 function RenderApp() {
- 
+  
+  const [user, loading, error] = useAuthState(auth);
  return (
+  
   <IonReactRouter>
+    <AuthenticationWrapper>
   <IonApp>
   
+  {user ? (<>
+   
     <IonSplitPane when="lg" mode="ios" id="sidemenu" contentId="main">
    
-     <Sidebar/>
+       <Sidebar/>
       
       <IonPage id="main">
      
@@ -61,7 +84,20 @@ function RenderApp() {
      
     </IonPage>
     </IonSplitPane>
+    </> ) : (<> 
+  
+  <IonPage id="main">
+  <Route path="/login" component={Login} exact={true} />
+ 
+
+  
+</IonPage>
+
+    
+    </> )}
+   
   </IonApp>
+  </AuthenticationWrapper>
 </IonReactRouter>
 
 );

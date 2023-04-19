@@ -13,31 +13,17 @@ import {setPersistence, browserSessionPersistence} from "firebase/auth"
 import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
 // Import the functions you need from the SDKs you need
-import { useHistory } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 
-export default function Sidebar() {
-   const history = useHistory();
-
-   const handleDashboardClick = () => {
-     history.push('/dashboard');
-   };
-   const profile = () => {
-      history.push('/profile');
-    };
-    
-    const learn = () => {
-      history.push('/learn');
-    };
-    const help = () => {
-      history.push('/help');
-    };
+export default function Login() {
+  
    const signInWithGoogle = async (e) => {
      
      e.preventDefault();
@@ -77,53 +63,63 @@ export default function Sidebar() {
          
         });
     }, [user]);
-
    
+  
+  
     return (
        
         <>
-    
-    <IonMenu contentId="main" id="mena" >
 <IonHeader>
   <IonToolbar color="primary" >
-  <IonCol sizeXs={5} sizeSm={4} sizeMd={3} sizeLg={3 } >
-     <img id="logo" fill="#p4420"   src={require('../CCAI.png')} />
+    <IonGrid>
+    <IonRow class="ion-justify-content-center">
+  <IonCol sizeXs={7} sizeSm={6} sizeMd={4} sizeLg={3 } >
+     <img id="logo" fill="#p4420"   src={require('../images/CCAI white.png')} />
  </IonCol> 
+ </IonRow>
+ </IonGrid>
   </IonToolbar>
 </IonHeader>
 
-         <IonRow color="primary">
-            <IonCol>
-           <IonRow>
-          <IonButton id="dashboard"   onClick={handleDashboardClick}>
-             <IonLabel style={{fontWeight: "800"}} id="dash"> <DesktopMacRounded/> Dashboard</IonLabel>
-          </IonButton>
-          </IonRow>
-          <IonRow>
-          <IonButton id="profile" tab="profile" onClick={profile}>
-             <IonLabel style={{fontWeight: "800"}}> <Person2Outlined/>Profile</IonLabel>
-          </IonButton>
-         </IonRow>
-         <IonRow>
-          <IonButton id="learn" tab="learn" onClick={learn}>
-             <IonLabel style={{fontWeight: "800"}}> <BookOnlineRounded/>Learn a skill</IonLabel>
-          </IonButton>
-          </IonRow>
-          <IonRow>
-          <IonButton id="signout" tab="signout"  onClick={() => signOut(auth)}>
-             <IonLabel style={{fontWeight: "800"}}> <BookOnlineRounded/>Sign Out </IonLabel>
-          </IonButton>
-        </IonRow>
-        <IonRow>
-          <IonButton id="help" tab="help" onClick={help}>
-             <IonLabel style={{fontWeight: "800 "}}> <HelpCenterRounded/> Help center</IonLabel>
-          </IonButton>
-          </IonRow>
-          </IonCol> </IonRow> 
+ <IonContent color="primary">
+    <IonGrid>
+    <IonRow class="ion-justify-content-center">
+           
+    <IonCol sizeXs={8} sizeSm={8} sizeMd={6} sizeLg={6}>
+    {user ? (<>     
+        <IonCard mode="ios" color="primary" >
+            <IonCardHeader>
+           <IonCardSubtitle style={{textAlign: "center", color: "white"}}>
+      You are logged in &  will be redirected soon 
+           </IonCardSubtitle>
+            </IonCardHeader>
+            <IonCardContent>
+               
+            </IonCardContent>
+           </IonCard>
+               </> ) : (<> 
+                <IonCard mode="ios" color="primary" >
+            <IonCardHeader>
+           <IonCardTitle style={{textAlign: "center", color: "white"}}>
+        Sign In
+           </IonCardTitle>
+            </IonCardHeader>
+            <IonCardContent>
+                <IonRow>
+            <IonCol sizeXs={12} sizeSm={8} sizeMd={5} sizeLg={6} style={{margin: "auto"}}>
+              
+            <img id="googlesign" onClick={signInWithGoogle} src={require('../images/btn_google_signin_light_pressed_web@2x.png')}/>
          
-         
-      
-</IonMenu>
+            </IonCol>
+            </IonRow>
+            </IonCardContent>
+           </IonCard>
+             </>)}
+            
+        </IonCol>
+    </IonRow>
+    </IonGrid>
+ </IonContent>
      
 
                 
