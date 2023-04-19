@@ -6,9 +6,9 @@ import { styled } from '@mui/material/styles';
 import { createTheme,ThemeProvider } from '@mui/material/styles';
 import { blueGrey } from '@mui/material/colors';
 
-import "./App.css"
+import "../css/dashboard.css"
 
-function App() {
+function Dashboard() {
   const [cvText, setCvText] = useState('');
   const [response, setResponse] = useState();
   const [loading, setLoading] = useState(false);
@@ -106,8 +106,8 @@ function App() {
             </IonCardContent>
           </IonCard>
           <IonRow style={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
-          <IonList >
-        <IonItem >
+         
+        <IonItem>
           <IonSelect
             aria-label="job type"
             color="warning"
@@ -120,7 +120,6 @@ function App() {
             <IonSelectOption value="Data developer">Junior Digital Marketing</IonSelectOption>
           </IonSelect>
         </IonItem>
-      </IonList>
                <IonCol sizeXs="6" >
                  <IonButton  disabled={logs === "" || cvText === ''} color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
                    Submit
@@ -158,4 +157,4 @@ function App() {
   );
 }
 
-export default App;
+export default Dashboard;

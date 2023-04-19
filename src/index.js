@@ -9,7 +9,7 @@ import {  map, desktop,searchCircle } from 'ionicons/icons';
 import { createRoot } from 'react-dom/client';
 import { IonReactRouter } from '@ionic/react-router';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
-import App from './App';
+import Dashboard from './pages/dashboard';
 import Button from 'react-bootstrap/Button';
 import { Grid } from '@mui/material';
 import Container from 'react-bootstrap/Container';
@@ -21,6 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
+import Profile from './pages/profile';
 // custom function to enable dark theme replace if you think yours is better
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 toggleDarkTheme(prefersDark.matches);
@@ -48,17 +49,16 @@ function RenderApp() {
      <Sidebar/>
       
       <IonPage id="main">
-      <div className="ion-page" id="main">
+     
    <Header/>
       <IonContent color="light">
-        <Route path="/dashboard" component={App} exact={true} />
-        <Route path="/searches" component={App} exact={true} />
-        <Route path="/learn" component={App} exact={true} />
-        <Route path="/applications" component={App} exact={true} />
-        <Route path="/help" component={App} exact={true} />
+        <Route path="/dashboard" component={Dashboard} exact={true} />
+        <Route path="/profile" component={Profile} exact={true} />
+        <Route path="/learn" component={Dashboard} exact={true} />
+        <Route path="/help" component={Dashboard} exact={true} />
         <Route path="/" render={() => <Redirect to="/dashboard" />} exact={true} />
       </IonContent>
-      </div>
+     
     </IonPage>
     </IonSplitPane>
   </IonApp>

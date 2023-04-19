@@ -1,10 +1,67 @@
 import React, {useState, useEffect} from "react";
 import Grid from '@mui/material/Unstable_Grid2';
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenu, IonRow, IonTabBar, IonTabButton, IonThumbnail, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenu, IonRow, IonTabBar, IonTabButton, IonThumbnail, IonTitle, IonToolbar } from "@ionic/react";
 import { desktop, home, star } from "ionicons/icons";
-import { BookOnlineRounded, Dashboard, DesktopMacRounded, DocumentScannerOutlined, HelpCenter, HelpCenterRounded, MenuRounded, Search, SearchOffRounded, SettingsApplications } from "@mui/icons-material";
+import { BookOnlineRounded, Dashboard, DesktopMacRounded, DocumentScannerOutlined, Google, HelpCenter, HelpCenterRounded, MenuRounded, Person2Outlined, Search, SearchOffRounded, SettingsApplications } from "@mui/icons-material";
 import { Divider } from "@mui/material";
-export default function Sidebar(){
+import { signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
+import firebase from 'firebase/compat/app'; 
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
+import { app,auth, firestore } from './firebase';
+import {setPersistence, browserSessionPersistence} from "firebase/auth"
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCollection } from 'react-firebase-hooks/firestore';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
+export default function Sidebar() {
+  
+   const signInWithGoogle = async (e) => {
+     
+     e.preventDefault();
+ 
+     try {
+      
+       const provider = new GoogleAuthProvider();
+       const result = await signInWithPopup(auth, provider);
+      console.log(result)
+       // Upload user's uid to Firestore
+     } catch (error) {
+       console.error(error);
+    
+     } 
+   };
+ 
+   const [user] = useAuthState(auth);
+   const [user2, setUser2] = useState(null); // Initialize user state as null
+   
+   // Get the auth object from Firebase
+ 
+   // Update the user state when the auth state changes
+   useEffect(() => {
+     if (user) {
+       setUser2(user);
+     } else {
+       setUser2(null);
+     }
+   }, [user]);
+
+   useEffect(() => {
+      setPersistence(auth, browserSessionPersistence)
+        .then(() => {
+          
+        })
+        .catch((error) => {
+         
+        });
+    }, [user]);
     return (
        
         <>
@@ -17,31 +74,52 @@ export default function Sidebar(){
  </IonCol> 
   </IonToolbar>
 </IonHeader>
-<IonContent color="primary">
- <IonTabBar mode="ios"  color="primary" style={{alignItems: "center",
-   height:"-webkit-fill-available", display: "flex", flexDirection: "column", overflow: "none"}}>
+
+ 
+         {auth.currentUser ? (<><IonTabBar mode="ios"  color="primary" style={{alignItems: "center",
+   height:"-webkit-fill-available", display: "flex", flexDirection: "column"}}>
  
           <IonTabButton id="dashboard" tab="dashboard" href="/dashboard">
              <IonLabel style={{fontWeight: "800"}}> <DesktopMacRounded/> Dashboard</IonLabel>
           </IonTabButton>
-          <IonTabButton id="searches" tab="searches" href="/searches">
-             <IonLabel style={{fontWeight: "800 "}}> <SearchOffRounded/> Previous Searches</IonLabel>
+          <IonTabButton id="profile" tab="profile" href="/profile">
+             <IonLabel style={{fontWeight: "800 "}}> <Person2Outlined/>Profile</IonLabel>
           </IonTabButton>
-          <IonTabButton id="applications" tab="applications" href="/applications">
-             <IonLabel style={{fontWeight: "800 "}}> <DocumentScannerOutlined/> Job applications</IonLabel>
-          </IonTabButton>
+         
           <IonTabButton id="learn" tab="learn" href="/learn">
              <IonLabel style={{fontWeight: "800"}}> <BookOnlineRounded/>Learn a skill</IonLabel>
           </IonTabButton>
-         
+          <IonTabButton id="signout" tab="signout"  onClick={() => signOut(auth)}>
+             <IonLabel style={{fontWeight: "800"}}> <BookOnlineRounded/>Sign Out </IonLabel>
+          </IonTabButton>
+        
           <IonTabButton id="help" tab="help" href="/help">
              <IonLabel style={{fontWeight: "800 "}}> <HelpCenterRounded/> Help center</IonLabel>
           </IonTabButton>
           
+          </IonTabBar>  </>) : 
          
-    
-          </IonTabBar>  
-          </IonContent>
+         
+         (<> <IonTabBar mode="ios"  color="primary" style={{alignItems: "center",
+   height:"-webkit-fill-available", display: "flex", flexDirection: "column"}}>
+ 
+          <IonTabButton id="dashboard" tab="dashboard" href="/dashboard">
+             <IonLabel style={{fontWeight: "800"}}> <DesktopMacRounded/> Dashboard</IonLabel>
+          </IonTabButton>
+         
+       <IonTabButton id="profile2" tab="profile2" onClick={signInWithGoogle}>
+             <IonLabel style={{fontWeight: "800"}}> <img id="logo"  src={require('../images/btn_google_signin_light_pressed_web@2x.png')} /></IonLabel>
+          </IonTabButton>  
+             
+          <IonTabButton id="learn2" tab="learn2" href="/learn">
+             <IonLabel style={{fontWeight: "800"}}> <BookOnlineRounded/>Learn a skill</IonLabel>
+          </IonTabButton>
+        
+          <IonTabButton id="help" tab="help" href="/help">
+             <IonLabel style={{fontWeight: "800 "}}> <HelpCenterRounded/> Help center</IonLabel>
+          </IonTabButton>
+          
+          </IonTabBar>  </>)}
 </IonMenu>
      
 

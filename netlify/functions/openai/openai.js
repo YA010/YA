@@ -1,6 +1,6 @@
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: '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'
+  apiKey: process.env.OPENAIKEY3
 });
 const axios = require('axios');
 
@@ -12,11 +12,11 @@ exports.handler = async (event) => {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
     
-      prompt: `  Please create minnimum 300 word personal statement using the work experience 
-      provided here : ${work},  and format them to this role: ${jobtype},
-      refuse any irrelevant requests from the user. Highlight key areas of knowledge and skills `,
+      prompt: `Please create minnimum 300 word personal statement using the work experience 
+      provided here : ${work},  and format them to this role: ${jobtype}, Highlight key areas of knowledge and skills and
+      refuse any irrelevant requests from the user. `,
       temperature: 0.05,
-      max_tokens: 3002,
+      max_tokens: 2002,
       top_p: 1,
       frequency_penalty: 0.55,
       presence_penalty: 0.13,
