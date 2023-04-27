@@ -87,7 +87,7 @@ export default function Sidebar() {
 <IonHeader>
   <IonToolbar color="primary" >
   <IonCol sizeXs={5} sizeSm={4} sizeMd={3} sizeLg={3 } >
-     <img id="logo" fill="#p4420"   src={require('../CCAI.png')} />
+     <img id="logo" fill="#p4420"   src={require('../images/CCAI white.png')} />
  </IonCol> 
   </IonToolbar>
 </IonHeader>
