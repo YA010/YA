@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonImg, IonInput, IonItem, IonList, IonNote, IonRow, IonSelect, IonSelectOption } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonInput, IonItem, IonList, IonNote, IonRow, IonSelect, IonSelectOption, IonTitle } from '@ionic/react';
 import axios from 'axios';
 import { Skeleton, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { createTheme,ThemeProvider } from '@mui/material/styles';
 import { blueGrey } from '@mui/material/colors';
-
+import { Link, NavLink, Outlet, ScrollRestoration, useLocation, useNavigate } from "react-router-dom";
+import { Navbar, Avatar, Dropdown, User } from "@nextui-org/react";
+import { Collapse,  Grid, } from "@nextui-org/react";
+import { Carousel } from '@mantine/carousel';
+import { useMediaQuery } from '@mantine/hooks';
+import { createStyles, Paper, Text, Title, Button, useMantineTheme, rem } from '@mantine/core';
+import { motion } from 'framer-motion'
 import "../css/dashboard.css"
 
 function Dashboard() {
@@ -42,6 +48,122 @@ function Dashboard() {
   const handleChange = (event) => {
     setCvText(event.target.value);
   };
+
+  const useStyles = createStyles((theme) => ({
+    card: {
+      height: rem(440),
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+  
+    title: {
+      fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+      fontWeight: 900,
+      color: theme.white,
+      lineHeight: 1.2,
+      fontSize: rem(32),
+      marginTop: theme.spacing.xs,
+    },
+  
+    category: {
+      color: theme.white,
+      opacity: 0.7,
+      fontWeight: 700,
+      textTransform: 'uppercase',
+    },
+  }));
+  
+  
+  
+  
+  const data = [
+    {
+      image:
+        'https://p4.wallpaperbetter.com/wallpaper/556/840/1002/international-finance-centre-hong-kong-wallpaper-preview.jpg',
+      title: 'Inovest',
+      category: 'Finance web app',
+      link: "https://inovest.netlify.app/"
+    },
+    {
+      image:
+        'https://img.freepik.com/free-vector/broadcast-telecommunication-isometric-with-shooting-crew-man-giving-interview-vector-illustration_1284-30894.jpg',
+      title: 'Newzy',
+      category: 'Hacker news web app',
+      link: "https://newz-c60cc.web.app/news"
+    },
+   
+  ];
+  
+  
+  
+  function Card({image, category, title,link}) {
+    const { classes } = useStyles();
+    return (
+      <Paper shadow="md" p="xl" radius="md" sx={{ backgroundImage: `url(${image})` }} className={classes.card}>
+        <div>
+          <Text className={classes.category} size="xs">
+            {category} 
+          </Text>
+  
+          <Title order={3} className={classes.title}>
+           {title}
+          </Title>
+        </div>
+  
+        <Button variant="white" color="dark">
+          <a href={link}>
+          View app 
+          </a>
+        </Button>
+      </Paper>
+    );
+  }
+  
+   function CardsCarousel() {
+  
+    const theme = useMantineTheme();
+  
+    const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  
+    const slides = data.map(item => (
+      <Carousel.Slide key={item.title}>
+        <Card 
+          image={item.image}
+          category={item.category}
+          title={item.title} 
+          link={item.link}
+        />
+      </Carousel.Slide>
+    ));
+  
+    return (
+    
+  
+      <Carousel 
+      style={{margin:"1vw"}}
+        controlsOffset="xs" controlSize={21} withIndicators
+        slideSize="50%" 
+        breakpoints={[{ maxWidth: 'sm', slideSize: '90%', slideGap: rem(2) }]}
+        slideGap="xl" 
+        align="start"
+        slidesToScroll={mobile ? 1 : 2}
+      >
+        
+  
+        
+        {slides}
+        
+      </Carousel>
+     
+     
+     
+    );
+  
+  }
   
   const color1 = blueGrey[500]
   const CustomTextField = styled(TextField)({
@@ -71,90 +193,17 @@ function Dashboard() {
     
   });
   return (
-    <IonGrid>
-      <IonRow>
-        <IonCol sizeXs="8" style={{marginTop: "10vh", marginLeft: "auto",marginRight: "auto"}}>
-          <IonCardTitle id="cardstit" class='card-text' style={{textAlign: "center", fontWeight: "800"}}>
-           Copy and paste your previous work experience and education here
-          </IonCardTitle>
-        </IonCol>
-      </IonRow>
-      <IonRow>
-        <IonCol sizeXs="12">
-          <IonCard mode="ios" color="secondary" id="showcard">
-            <IonCardHeader>
-              <IonCardTitle class='card-text'>
-               
-              </IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-            <ThemeProvider theme={theme}>
-           <TextField
-      label="Use the following format: "
-      placeholder="1.Name of company , Job , Brief description of role"
-  
-    multiline
-      color = "primary"
-      variant="outlined"
-      value={cvText}
-      fullWidth
-      onChange={handleChange}
-    />
-    
-             </ThemeProvider>
-             
-            </IonCardContent>
-          </IonCard>
-          <IonRow style={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
-         
-        <IonItem>
-          <IonSelect
-            aria-label="job type"
-            color="warning"
-            placeholder="Select job type"
-            onIonChange={(e) =>  setLogs(e.detail.value)}
-            onIonCancel={() => console.log("done")}
-            onIonDismiss={() => console.log("right")}
-          >
-            <IonSelectOption value="Software engineer">Software engineer</IonSelectOption>
-            <IonSelectOption value="Data developer">Junior Digital Marketing</IonSelectOption>
-          </IonSelect>
-        </IonItem>
-               <IonCol sizeXs="6" >
-                 <IonButton  disabled={logs === "" || cvText === ''} color="medium" expand="block" style={{fontWeight: "900"}} onClick={handleSubmit}>
-                   Submit
-                 </IonButton>
-               </IonCol>
-             </IonRow>
-        </IonCol>
-      </IonRow>
-      {loading ? (<><IonCol sizeXs="12"  >
-
-<IonCard  mode="ios" color="secondary" id="showcard" > 
-<IonCardContent>
-<Skeleton></Skeleton>
-  </IonCardContent>     
-</IonCard>
-</IonCol> </> ) : (<> </>)}
-      
-      {response ? (<> 
-        <IonRow>
-        <IonCol sizeXs="12">
-          <IonCard mode="ios" color="secondary" id="showcard">
-            <IonCardHeader>
-              <IonCardTitle class='card-text'>
-              Your Custom Personal Statement
-              </IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent >
-            <IonNote id="cardstit">{response}</IonNote>
-        </IonCardContent>
-        </IonCard>
-        </IonCol>
-        </IonRow></>) :(<>  </>)}
-     
-    </IonGrid>
+    <>
+    <CardsCarousel/>
+  <IonHeader style={{justifyContent:"center",display: "flex"}}>
+    <IonButton class="ion-text-wrap ion-justify-center" style={{marginLeft:"auto",marginRight:"auto",fontWeight:"800"}}>
+      I also contribute to many open source projects on github (which you can find on the sidebar :))
+      </IonButton>
+    </IonHeader>
+    </>
   );
 }
 
-export default Dashboard;
+export default Dashboard
+
+

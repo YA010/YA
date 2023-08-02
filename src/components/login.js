@@ -74,7 +74,6 @@ export default function Login() {
     <IonGrid>
     <IonRow class="ion-justify-content-center">
   <IonCol sizeXs={7} sizeSm={6} sizeMd={4} sizeLg={3 } >
-     <img id="logo" fill="#p4420"   src={require('../images/CCAI white.png')} />
  </IonCol> 
  </IonRow>
  </IonGrid>

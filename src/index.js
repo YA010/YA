@@ -30,28 +30,7 @@ import { useHistory } from 'react-router-dom';
 // custom function to enable dark theme replace if you think yours is better
 
 // Add or remove the "dark" class based on if the media query matches
-function AuthenticationWrapper({ children }) {
-  const [user, loading, error] = useAuthState(auth);
-  const history = useHistory();
 
-  useEffect(() => {
-    if (loading) {
-      return; // Wait until Firebase authentication is complete
-    }
-  
-    if (!user) {
-      if (history.location.pathname !== '/login') {
-        history.push('/login');
-      }
-    } else {
-      if (history.location.pathname === '/login') {
-        history.push('/dashboard');
-      }
-    }
-  }, [user, loading, history]);
-
-  return children;
-}
 
 
 
@@ -62,11 +41,8 @@ function RenderApp() {
  return (
   
   <IonReactRouter>
-    <AuthenticationWrapper>
+ 
   <IonApp>
-  
-  {user ? (<>
-   
     <IonSplitPane when="lg" mode="ios" id="sidemenu" contentId="main">
    
        <Sidebar/>
@@ -84,20 +60,10 @@ function RenderApp() {
      
     </IonPage>
     </IonSplitPane>
-    </> ) : (<> 
-  
-  <IonPage id="main">
-  <Route path="/login" component={Login} exact={true} />
- 
-
-  
-</IonPage>
-
     
-    </> )}
    
   </IonApp>
-  </AuthenticationWrapper>
+ 
 </IonReactRouter>
 
 );

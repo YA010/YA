@@ -23,7 +23,7 @@ export default function Header(){
 </IonCol> </>) :(<> </>)}
  <IonCol sizeXs="2" offset="5" >
   <IonMenuToggle >
-            <IonButton color="medium" > <MenuRounded/></IonButton>
+            <IonButton color="primary" > <MenuRounded/></IonButton>
           </IonMenuToggle>
           </IonCol>
           </IonRow>
